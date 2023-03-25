@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>
+            www.exam.com
+        </title>
+    </head>
+    <style>
+        .p1{
+            color: black;
+            background-color: rgb(219, 231, 230);
+            height: 500px;
+            width: 700px;           
+            padding: 20px;
+        }
+        .p2{
+            color: black;
+            font-weight: bolder;
+            font-size: large;
+            margin: 10px;
+            width: 600px;
+            height: 100px;
+            opacity: 0.5;
+            
+        }
+        .ops{
+
+            display: inline;
+            font-size: x-large;
+            width: 400px;
+        }
+        .p3{
+            display: inline-flex;
+        }
+    </style>
+    <script>
+        var queryString = location.search.substring(1);
+        let se=0;
+        let sum=0;
+        let result=[];
+        let ques=["1) Which of the following is not an OOPS concept?","2) Which feature of OOPS derives the class from another class?","3) Which member of the superclass is never accessible to the subclass?","4) The principle of abstraction____","5) When does method overloading is determined?"];
+        let mcq1=["Encapsulation","Inheritance","Public member","is used to achieve OOPS.","At run time"];
+        let mcq2=["Polymorphism","Data hiding","Protected member","is used to avoid duplication","At compile time"];
+        let mcq3=["Exception","Encapsulation","Private member","Use abstraction at its minimum","At coding time"];
+        let mcq4=["Abstraction","Polymorphism","All of the mentioned","is used to remove longer codes","At execution time"];
+        let ans=[3,1,3,2,2];
+        function startQ(){
+            if(se==0){
+                document.getElementById("t1").value=ques[0];
+                document.getElementById("tx1").value=mcq1[0];
+                document.getElementById("tx2").value=mcq2[0];
+                document.getElementById("tx3").value=mcq3[0];
+                document.getElementById("tx4").value=mcq4[0];
+            }
+            
+        }
+        function nextQ(){
+            if(se<ques.length-1){
+                se++;
+                document.getElementById("t1").value=ques[se];
+                document.getElementById("tx1").value=mcq1[se];
+                document.getElementById("tx2").value=mcq2[se];
+                document.getElementById("tx3").value=mcq3[se];
+                document.getElementById("tx4").value=mcq4[se];
+            }
+        }
+        function preQ(){
+            if(se>0){
+                se--;
+                document.getElementById("t1").value=ques[se];
+                document.getElementById("tx1").value=mcq1[se];
+                document.getElementById("tx2").value=mcq2[se];
+                document.getElementById("tx3").value=mcq3[se];
+                document.getElementById("tx4").value=mcq4[se];
+            }
+        }
+        function ansQ(n){
+            result[se]=n;
+        }
+        function submitQ(){
+            if(result.length!=ans.length){
+                while(result.length!=ans.length){
+                    result.push(0);
+                }
+            }else{
+                for(let i=0;i<ans.length;i++){
+                    if(ans[i]==result[i]){
+                        sum=sum+5;
+                    }
+                }
+            }
+            localStorage.setItem(queryString,sum);
+            window.location.href ="endPage.html";
+        }
+    </script>
+    <body>
+
+            <h1>Answer The questions Below</h1>
+            <h1><button onclick="startQ()">startExam</button></h1>
+        <div class="p3">
+            
+            <button onclick="preQ()">previous</button>
+            <center>
+                <div class="p1">
+                    <p>
+                        <input type="text" class="p2" id="t1">
+                    </p><br>
+                    <form class="ops">
+                        <input type="radio" id="op1" name="option1" value="1" onclick="ansQ(1)">
+                        <input type="text" id="tx1"><br>
+                        <input type="radio" id="op1" name="option1" value="2" onclick="ansQ(2)">
+                        <label for="option2"><input type="text" id="tx2"></label><br>
+                        <input type="radio" id="op1" name="option1" value="3" onclick="ansQ(3)">
+                        <label for="option3"><input type="text" id="tx3"></label><br>
+                        <input type="radio" id="op1" name="option1" value="4" onclick="ansQ(4)">
+                        <label for="option4"><input type="text" id="tx4"></label>
+                      </form>
+                </div>
+            </center>
+            <button onclick="nextQ()">next</button>
+        </div>
+        <h1><button onclick="submitQ()">Submit</button></h1>
+
+        
+        
+       
+    </body>
+</html>

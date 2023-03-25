@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>
+            www.exam.com
+        </title>
+    </head>
+    <style>
+        .p2{
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            font-size: large;
+            color: black;
+            opacity: 0.8;
+            width: 400px;
+            margin: 200px;
+            padding: 20px;
+            
+        }
+        .h{
+            background-image: image-set("exam.jpg");
+            opacity: 0.5;
+        }
+    </style>
+    <script>
+        function startExam(){
+            let name=document.getElementById("t1").value;
+            localStorage.setItem(name,0);
+            let ur="questions.html?"+name;
+            window.location.href =ur;
+        }
+    </script>
+    <body background="exam.jpg">
+        
+            <div class="p2">
+                <center>
+                    <h1>Online Examination</h1>
+                <br>
+                <input type="text" placeholder="enter your name" id="t1">
+                <br><br>
+                <button onclick="startExam()">Start Exam</button>
+                </center>
+                
+            </div>
+        
+       
+    </body>
+</html>
